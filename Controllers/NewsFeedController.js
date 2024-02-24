@@ -1,10 +1,10 @@
 const NewsFeedModel = require("../Schemas/NewsFeed");
 
+const feedInstance = NewsFeedModel();
+
 class NewsFeedController {
 
     addFeed(postData, user) {
-
-        const feedInstance = NewsFeedModel();
 
         const generatedNewsFeed = feedInstance.addFeed(postData, user);
 
@@ -12,6 +12,12 @@ class NewsFeedController {
 
     }
 
+    getFeeds(req, res, next) {
+
+        const userId = req.query.userId;
+
+        return res.status(200).json(feedInstance.getFeeds(userId));
+    }
 
 }
 

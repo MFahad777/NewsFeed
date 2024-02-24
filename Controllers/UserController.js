@@ -20,6 +20,11 @@ class UserController {
         const user = new UserModel();
 
         user.addUser(firstName, lastName, gender, age, email, password, followers, followings, pages, groups);
+
+        return res.status(200).json({
+            user,
+            message:"User Created"
+        })
     }
 }
 

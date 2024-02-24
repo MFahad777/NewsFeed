@@ -16,6 +16,10 @@ class NewsFeed {
 
         return newsFeed;
     }
+
+    getFeeds(userId) {
+        return allFeeds.filter(feed => feed.userId === userId);
+    }
 }
 
 module.exports = NewsFeed;
