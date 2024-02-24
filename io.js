@@ -1,6 +1,8 @@
 const socketIO = require("socket.io");
 
-const NewsFeed = require("./Schemas/NewsFeed");
+const NewsFeedController = require("./Controllers/NewsFeedController");
+
+const newsFeedInstance = new NewsFeedController();
 
 const User = require("./Schemas/User");
 
@@ -10,19 +12,16 @@ const io = socketIO(app);
 
 io.on("connection", (socket) => {
 
+    const user = new User();
 
     socket.on("postPublish",(postData, userData) => {
 
-        const user = new User();
-
-        const newsFeed = new NewsFeed();
-
         const createdUser = user.add(userData);
 
-        const generatedFeed = newsFeed.addFeed(postData, createdUser);
+        const generatedFeed = newsFeedInstance.addFeed(postData, createdUser);
 
-        socket.emit("newsFeed", generatedFeed)
+        socket.emit("newsFeed", generatedFeed);
 
-    })
+    });
 
 });
