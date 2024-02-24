@@ -1,22 +1,21 @@
+const allFeeds = [];
+
 class NewsFeed {
-
-    constructor(userId) {
-
-        this.userId = userId
-    }
 
     addFeed(data, user) {
 
-        const {
-            text, 
-            images, 
-            videos, 
-            likes, 
-            comments, 
-            shares, 
-            advertisments
-        } = data;
+        const newsFeed = {
+            data,
+            userId: user.id
+        }
 
+        allFeeds.push({
+            data,
+            userId: user.id
+        })
+
+        return newsFeed;
     }
-
 }
+
+module.exports = NewsFeed;
