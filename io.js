@@ -14,6 +14,7 @@ io.on("connection", (socket) => {
 
     const user = new User();
 
+    // Whenever a post is publish a newsFeed will be generated based on post Data
     socket.on("postPublish",(postData, userData) => {
 
         const createdUser = user.add(userData);
