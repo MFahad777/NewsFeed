@@ -19,6 +19,7 @@ class NewsFeedController {
         return res.status(200).json(feedInstance.getFeeds(userId));
     }
 
+
 }
 
 module.exports = NewsFeedController;

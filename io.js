@@ -8,7 +8,7 @@ const User = require("./Schemas/User");
 
 const app = require("./app");
 
-const io = socketIO(app);
+const io = socketIO.Server(app);
 
 io.on("connection", (socket) => {
 
